@@ -13,7 +13,7 @@ void solve() {
         if (s[i] == s[i - 1]) {
             cur_len++;
         } else {
-            // a[i] != a[i-1]: breakage detected
+            // s[i] != s[i-1]: breakage detected
             longest_len = max(longest_len, cur_len);
             cur_len = 1;
         }
