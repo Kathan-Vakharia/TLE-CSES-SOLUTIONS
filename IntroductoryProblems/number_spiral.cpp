@@ -1,50 +1,65 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
 using namespace std;
-#define nl '\n'  // newline
-#define sp ' '   // space
 #define ll long long
+/*
+Spiral Matrix (5x5)
 
-void solve() {
-    ll x, y;
-    cin >> x >> y;
+         Columns →
+       1    2    3    4    5
+     +----+----+----+----+----+
+Row 1 |  1 |  2 |  9 | 10 | 25 |
+     +----+----+----+----+----+
+Row 2 |  4 |  3 |  8 | 11 | 24 |
+     +----+----+----+----+----+
+Row 3 |  5 |  6 |  7 | 12 | 23 |
+     +----+----+----+----+----+
+Row 4 | 16 | 15 | 14 | 13 | 22 |
+     +----+----+----+----+----+
+Row 5 | 17 | 18 | 19 | 20 | 21 |
+     +----+----+----+----+----+
 
-    // find spiral no
-    ll spiral_no = max(x, y);
-    // 1 3 5 7 9
-    ll total_ele = 1 + (spiral_no - 1) * 2;
-
-    // find bounds
-    ll m = spiral_no - 1;
-    ll start = (m * (2 + (m - 1) * 2)) / 2 + 1;
-    ll end = start + total_ele - 1;
-
-    // taking even or odd into consideration
-    if (spiral_no % 2 == 0) swap(start, end);
-
-    // find answer
-    if (x >= y) {
-        if (spiral_no % 2 == 0)
-            cout << start - y + 1 << nl;
-        else
-            cout << start + y - 1 << nl;
-    } else {
-        if (spiral_no % 2 == 0)
-            cout << end + x - 1 << nl;
-        else
-            cout << end - x + 1 << nl;
-    }
-}
-
-/* Time : O(t) = O(1e5), Space : O(1)
- */
+*/
 
 int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    int t = 1;
+    ll t;
     cin >> t;
-    while (t--)
-        solve();
+
+    while (t--) {
+        ll x, y;
+        cin >> x >> y;  // Read coordinates (x, y)
+
+        ll ans;
+        if (x <= y) {
+            // Vertical Line Values : Border Cell -- Top Right
+
+            if (y % 2 == 0) {
+                ans = (y - 1) * (y - 1) + x;
+            } else {
+                ans = y * y - x + 1;
+            }
+
+        } else {
+            // Horizontal Line Values : Border Cell -- Bottom Left
+            if (x % 2 == 0) {
+                ans = x * x - y + 1;
+            } else {
+                ans = (x - 1) * (x - 1) + y;
+            }
+        }
+
+        cout << ans << "\n";
+    }
+
+    return 0;
 }
+
+/*
+    Time Complexity:
+    ----------------
+    O(t) — where t is the number of test cases.
+    Each test case is handled in constant time O(1).
+
+    Space Complexity:
+    -----------------
+    O(1) — Only a constant amount of extra space is used regardless of input size.
+*/
