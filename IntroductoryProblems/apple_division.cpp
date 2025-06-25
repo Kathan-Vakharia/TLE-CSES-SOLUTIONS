@@ -36,10 +36,10 @@ void solve() {
     ll ans = 1e18;
     int start = 0;
     divide_apples(weights, ans, start, 0, 0);
-    
+
     //* ans has stored optimal answer
     cout << ans << nl;
-}
+}// T: O(2^n) S: O(n)
 
 /*
  */
