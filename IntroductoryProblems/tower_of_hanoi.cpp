@@ -9,22 +9,20 @@ void TH(int discs, int start, int end, int aux) {
         return;
     }
 
-    //move n-1 discs from A-->C using 'B'
+    // move n-1 discs from A-->C using 'B'
     TH(discs - 1, start, aux, end);
 
-    //move nth disc from A-->C
+    // move nth (largest) disc from A-->C
     cout << start << " " << end << endl;
 
-    //move n-1 discs from B-->C using 'A'
+    // move n-1 discs from B-->C using 'A'
     TH(discs - 1, aux, end, start);
-}//* T: O(2^n) S: O(n)
+}  //* T: O(2^n) S: O(n)
 
 int main() {
     int n;
     cin >> n;
-    
-    cout<<(1<<n)-1<<endl;
+
+    cout << (1 << n) - 1 << endl;
     TH(n, 1, 3, 2);
-
-
 }
