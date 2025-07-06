@@ -20,13 +20,13 @@ void solve() {
     string s;
     cin >> s;
     int n = len(s);
-    
+
     // Create Frequency Map
     map<char, int> ft;
     for (auto ch : s)
         ft[ch]++;
 
-    string ans;
+    string ans = "";
     char last = '\0';
     for (int i = 0; i < n; i++) {
         // Try Picking smallest character possible
@@ -51,7 +51,7 @@ void solve() {
         cout << ans << nl;
     else
         cout << "-1" << nl;
-}//* T: O(26*n), S:O(26)
+}  //* T: O(26*n), S:O(26)
 
 int main() {
     int t = 1;
