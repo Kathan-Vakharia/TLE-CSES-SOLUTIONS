@@ -16,7 +16,7 @@ void solve() {
 
         ll dig_len = 1;  // Current digit length
         ll count = 9;    // Count of numbers with 'dig_len' digits
-        ll start = 1;    // Starting position for numbers with 'digits' digits
+        ll start = 1;    // Starting position for numbers with 'digit_len' digits
 
         // Find which digit-length group contains position k
         while (k > start + dig_len * count - 1) {
