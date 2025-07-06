@@ -6,16 +6,6 @@ using namespace std;
 #define len(x) int((x).size())
 #define ll long long
 
-int count_digits(ll n) {
-    if (n == 0) return 1;
-    int count = 0;
-    while (n > 0) {
-        count++;
-        n /= 10;
-    }
-    return count;
-}
-
 void solve() {
     int q;
     cin >> q;
@@ -24,37 +14,30 @@ void solve() {
         ll k;
         cin >> k;
 
-        ll digits = 1;  // Current digit length
-        ll count = 9;   // Count of numbers with 'digits' digits
-        ll start = 1;   // Starting position for numbers with 'digits' digits
+        ll dig_len = 1;  // Current digit length
+        ll count = 9;    // Count of numbers with 'dig_len' digits
+        ll start = 1;    // Starting position for numbers with 'digits' digits
 
         // Find which digit-length group contains position k
-        while (k > start + digits * count - 1) {
-            start += digits * count;  // Move to next group's starting position
-            digits++;                 // Increment digit length
-            count *= 10;              // Next group has 10x more numbers
+        while (k > start + dig_len * count - 1) {
+            start += dig_len * count;  // Move to next group's starting position
+            dig_len++;                 // Increment digit length
+            count *= 10;               // Next group has 10x more numbers
         }
 
-        // Now we know k is in the group of 'digits'-digit numbers
-        ll first_num = pow(10, digits - 1);  // First number with 'digits' digits
-        ll offset = (k - start) / digits;    // Which number in this group
-        ll target_num = first_num + offset;  // The actual number containing position k
+        // Now we know k is in the group of 'dig_len'-digit numbers
+        ll first_num = pow(10, dig_len - 1);  // First number with 'dig_len' digits
+        ll num_offset = (k - start) / dig_len; 
+        ll target_num = first_num + num_offset;   // The actual number containing position k
 
         // Find which digit within target_num
         string num_str = to_string(target_num);
-        ll pos_in_num = (k - start) % digits;
+        ll digit_offset = k - start;
+        ll pos_in_num = digit_offset % dig_len;
 
         cout << num_str[pos_in_num] << "\n";
     }
-}
-
-/*
-
-
-
-
-
-*/
+}//* T:(q*log(k)) ~ O(1e3 x 18) ~ O(1e4), S: O(1)
 
 int main() {
     ios::sync_with_stdio(0);
