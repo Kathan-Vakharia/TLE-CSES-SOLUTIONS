@@ -10,7 +10,6 @@ using namespace std;
 const int N = 7;
 int total_paths = 0;
 vvi vis(N, vi(N, 0));
-
 string path;
 //check if cell 'i,j' is within the grid
 bool is_inbound(int i, int j) {
