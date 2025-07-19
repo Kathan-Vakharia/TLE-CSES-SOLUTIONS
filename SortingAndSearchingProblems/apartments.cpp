@@ -37,7 +37,7 @@ void solve() {
         }
     }
     cout << total << nl;
-}
+}//* T: O(nlogn + mlogm), S:O(1)
 
 int main() {
     int t = 1;
