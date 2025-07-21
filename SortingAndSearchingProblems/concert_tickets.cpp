@@ -13,7 +13,7 @@ void solve() {
         prices.insert(p);
     }
 
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++) { 
         int th;
         cin >> th;
 
@@ -21,7 +21,7 @@ void solve() {
         auto it = prices.upper_bound(th);
 
         if (it == prices.begin()) {
-            //! all available are greater than threshold
+            //! all available are greater than threshold or set is empty
             cout << "-1" << nl;
         } else {
             it--;
@@ -29,7 +29,7 @@ void solve() {
             prices.erase(it);
         }
     }
-}  // * T: O(m*log(n)), S:O(n)
+}  // * T: O(n*logn + m*log(n)), S:O(n)
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
