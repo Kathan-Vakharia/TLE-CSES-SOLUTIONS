@@ -31,7 +31,7 @@ void solve() {
     }
 
     cout << ans << nl;
-}
+}//* T: O(n*logn), S: O(n)
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
