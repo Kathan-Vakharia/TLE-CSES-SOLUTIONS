@@ -26,7 +26,7 @@ void solve() {
                 mp.erase(arr[i]);
             i++;
         }
-        //> mp.size() is the length of longest sequence of unique songs ending at index 'j'
+        //> mp.size() is the length of longest sequence of unique elements ending at index 'j'
         //> no. of subarrays ending at 'j' with unique elements = mp.size() + 1
         ans += len(mp); // or j - i + 1 as [i, j] has unique elements
         j++;
