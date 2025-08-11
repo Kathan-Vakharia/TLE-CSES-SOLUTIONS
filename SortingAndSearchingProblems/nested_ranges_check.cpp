@@ -110,7 +110,7 @@ void solve() {
         if (i < n - 1) cout << " ";
     }
     cout << "\n";
-}
+}//* T:O(n*logn), S: O(n)
 
 int main() {
     ios_base::sync_with_stdio(false);  // Speed up input/output
