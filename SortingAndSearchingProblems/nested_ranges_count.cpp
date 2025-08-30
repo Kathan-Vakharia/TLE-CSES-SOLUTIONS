@@ -1,9 +1,7 @@
-#include <algorithm>
-#include <climits>
+#include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-#include <iostream>
-#include <vector>
+
 #define len(x) int((x).size())
 using namespace std;
 using namespace __gnu_pbds;
@@ -52,54 +50,50 @@ void solve() {
     sort(intervals.begin(), intervals.end(), compareIntervals);
 
     // Arrays to store results (indexed by original position)
-    vector<int> is_contained_by_another(n, 0);  // Is this interval inside another?
-    vector<int> contains_another(n, 0);         // Does this interval contain another?
+    vector<int> is_contained_by_another(n, 0);  // this interval inside how many
+    vector<int> contains_another(n, 0);         // this interval contain how many
 
-    /**
-     * Check if each interval is contained by another
+    /** This interval inside how many ?
      * Strategy: For each interval,
-     * - check if any previous interval (with smaller or equal start)
+     * - check how many previous interval (with smaller or equal start)
      * - has an end point that covers this interval's end point
      */
     ordered_multiset<int> ets;
     for (int i = 0; i < n; i++) {
         const auto& current = intervals[i];
 
-        // If we've seen an interval that ends at or after current's end,
-        // and it must have started before or at current's start (due to sorting),
-        // then current is contained by that interval
+        // index of the first end_time in [0,...,i-1] whose end_time == cur.end_time
         int lb = ets.order_of_key(current.end);
+        //> all intervals in our set, from 'lb' index till len(ets) till contain 'current'
         is_contained_by_another[current.original_index] = len(ets) - lb;
         ets.insert(current.end);
     }
 
-    /**
-     * Check if each interval contains another
+    /** each interval contains how many in it?
      * Strategy: Process intervals from right to left (reverse order)
-     * For each interval, check if any interval to its right has both:
+     * For each interval, check how many interval to its right has
      * - start >= current.start (guaranteed by sorting)
-     * - end <= current.end (we track minimum end seen)
+     * - end <= current.end
      */
     ets.clear();
     for (int i = n - 1; i >= 0; i--) {
         const auto& current = intervals[i];
 
-        // If we've seen an interval with end <= current.end,
-        // and it must have start >= current.start (due to sorting and processing order),
-        // then current contains that interval
+        // index of current.end_time + 1 in [i+1,...n-1] if it exists Or would have existed
         int ub = ets.order_of_key(current.end + 1);
+        //> all intervals in our set, from [0...ub) are contained by current
         contains_another[current.original_index] = ub;
         ets.insert(current.end);
     }
 
-    // First line: Does each interval contain another?
+    // First line: How many interval(s) does this  interval contain ?
     for (int i = 0; i < n; i++) {
         cout << contains_another[i];
         if (i < n - 1) cout << " ";
     }
     cout << "\n";
 
-    // Second line: Is each interval contained by another?
+    // Second line: this interval is contained by how many other?
     for (int i = 0; i < n; i++) {
         cout << is_contained_by_another[i];
         if (i < n - 1) cout << " ";
@@ -108,7 +102,7 @@ void solve() {
 }  //* T:O(n*logn), S: O(n)
 
 int main() {
-    ios_base::sync_with_stdio(false);  // Speed up input/output
+    ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
     solve();
