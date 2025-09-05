@@ -14,24 +14,23 @@ void solve() {
     for (int i = 0; i < n; i++)
         cin >> arr[i];
 
-    map<int, int> mp;   //> tracks unique counts
-    multiset<int> ele;  //> tracks actual counts
+    map<int, int> mp;  //> tracks unique counts
     ll ans = 0;
     int i = 0, j = 0;
     while (j < n) {
         mp[arr[j]]++;
-        ele.insert(arr[j]);
 
         //> shrink the window until we have atmost 'k' unique elements in [i...j]
         while (len(mp) > k) {
             mp[arr[i]]--;
             if (mp[arr[i]] == 0)
                 mp.erase(arr[i]);
-            ele.erase(ele.find(arr[i]));
+
             i++;
         }
 
-        ans += len(ele);
+        //> add contribution by index 'j'
+        ans = ans + (j - i + 1);
         j++;
     }
 
