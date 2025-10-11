@@ -12,8 +12,8 @@ void solve() {
 
     int i = 0;
     map<int, int> wnd_map;
-
     for (int j = 0; j < n; j++) {
+        //> element enters
         wnd_map[arr[j]]++;
 
         if (j - i + 1 < k) {
