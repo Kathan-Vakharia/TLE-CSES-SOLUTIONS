@@ -25,8 +25,8 @@ void solve() {
 
     int i = 0;
     ordered_multiset<int> wnd_st;
-
     for (int j = 0; j < n; j++) {
+        //> element enters
         wnd_st.insert(arr[j]);
 
         if (j - i + 1 < k) {
@@ -34,9 +34,10 @@ void solve() {
         } else {
             cout << *wnd_st.find_by_order((k - 1) / 2) << ' ';
 
+            //> element exits
             //! IMP: First Find, then delete; don't try to directly erase
             wnd_st.erase(wnd_st.find_by_order(wnd_st.order_of_key(arr[i])));
-            i++;  //> slide the window
+            i++;  
         }
     }
    
