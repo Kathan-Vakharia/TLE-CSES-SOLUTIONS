@@ -27,22 +27,23 @@ void solve() {
     ordered_set<pair<int, int>> wnd_st;
     ll inv = 0;
     for (int j = 0; j < n; j++) {
+        //> element enters
         wnd_st.insert({arr[j], j});
         int pos = wnd_st.order_of_key({arr[j], j});
         inv += len(wnd_st) - pos - 1;
+
         if (j - i + 1 < k) {
             continue;
         } else {
             cout << inv << " ";
 
+            //> element leaves/exits
             pos = wnd_st.order_of_key({arr[i], i});
             inv -= pos;
-
             wnd_st.erase({arr[i], i});
-            i++;  //> slide the window
+            i++;  
         }
     }
-
 }  //* T:O(n*logk), S: O(k)
 
 int main() {

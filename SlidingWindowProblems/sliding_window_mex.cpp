@@ -17,6 +17,7 @@ void solve() {
     int i = 0;
     map<int, int> wnd_map;
     for (int j = 0; j < n; j++) {
+        //> element enters
         wnd_map[arr[j]]++;
         if (wnd_map[arr[j]] == 1) not_seen.erase(arr[j]);
 
@@ -26,13 +27,14 @@ void solve() {
             //> output: smallest unseen element in range [0...k]
             cout << *begin(not_seen) << " ";
 
+            //> element exits
             if (wnd_map[arr[i]] == 1) {
                 wnd_map.erase(arr[i]);
                 not_seen.insert(arr[i]);
             } else {
                 wnd_map[arr[i]]--;
             }
-            i++;  //> slide the window
+            i++;  
         }
     }
 
