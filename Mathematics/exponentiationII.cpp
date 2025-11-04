@@ -28,4 +28,4 @@ int main() {
         cin >> a >> b >> c;
         cout << binpow(a, binpow(b, c, M - 1), M) << '\n';
     }
-}  //* T: O(n*(log(b) + log(c))), S:O(1)
+}  //* T: O(n*(log(1e9) + log(1e9))), S:O(1)
