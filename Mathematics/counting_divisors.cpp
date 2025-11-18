@@ -5,7 +5,7 @@ int solve_in_sqrt_x(int x) {
     int div_cnt = 0;
 
     for (int i = 1; i * i <= x; i++) {
-        //> add contribution of {i, n/i}
+        //> add contribution of {i, x/i}
         if (x % i == 0) {
             div_cnt++;
             if (x / i != i)
