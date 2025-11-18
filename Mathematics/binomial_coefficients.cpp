@@ -21,11 +21,11 @@ ll M = 1e9 + 7;
 vector<ll> fact(maxN + 1, 1);
 vector<ll> inv_fact(maxN + 1, 1);
 
-void solve() {
-    int n, m;
-    cin >> n >> m;
+void print_a_choose_b() {
+    ll a, b;
+    cin >> a >> b;
     //> Recall: Operator Precedence and Associativity
-    cout << fact[n] * inv_fact[n - m] % M * inv_fact[m] % M << "\n";
+    cout << fact[a] * inv_fact[a - b] % M * inv_fact[b] % M << "\n";
 }
 
 int main() {
@@ -41,5 +41,5 @@ int main() {
     int n = 1;
     cin >> n;
     while (n--)
-        solve();
+        print_a_choose_b();
 }  //* T: O(n + maxN) where n=O(1e5), maxN=O(1e6)
