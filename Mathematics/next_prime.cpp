@@ -5,7 +5,7 @@ using namespace std;
 //> Enumerating Primes using Sieve in O(maxN)
 const int maxN = 1e6 + 10;
 vector<ll> primes_list;
-vector<bool> is_prime(maxN, true);
+vector<bool> is_prime(maxN + 1, true);
 void init_primes() {
     for (int i = 2; i * i <= maxN; i++) {
         if (is_prime[i]) {

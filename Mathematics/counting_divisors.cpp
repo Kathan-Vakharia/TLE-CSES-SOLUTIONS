@@ -16,7 +16,7 @@ int solve_in_sqrt_x(int x) {
 }  //* T:O(sqrt(x)), S:O(1)
 
 const int maxN = 1e6 + 5;
-vector<int> div_cnt(maxN, 0);
+vector<int> div_cnt(maxN + 1, 0);
 
 int main() {
     int n;

@@ -2,7 +2,7 @@
 using namespace std;
 
 const int maxN = 1e6 + 5;
-vector<int> cnt(maxN, 0);
+vector<int> cnt(maxN + 1, 0);
 
 int main() {
     int n;
