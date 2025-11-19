@@ -36,10 +36,10 @@ int main() {
         fact[i] = fact[i - 1] * i % M;
     }
 
-    ll a, b;
-    cin >> a >> b;
+    ll n, m;
+    cin >> n >> m;
 
-    //> Result: C(a+b-1, b)
-    cout << calc_nCr(a + b - 1, b) << "\n";
+    //> Result: C(n+m-1, b)
+    cout << calc_nCr(n + m - 1, m) << "\n";
 }  //* T: O(n + log M) where n=O(1e6), M=1e9+7
    //* where O(1e6) for precomputing factorials, and O(log M) for modular inverse calculation
