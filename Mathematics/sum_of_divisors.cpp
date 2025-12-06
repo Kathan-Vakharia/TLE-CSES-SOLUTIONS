@@ -35,7 +35,8 @@ int main() {
     for (ll k = 1; k * k <= n; k++)
         res = (res + k * (n / k) % M) % M;
 
-    //> Region 2: Iterate over quotient values q from 1 to sqrt(n)-1
+    //> Region 2: Large k (> sqrt(n)), small quotients (< sqrt(n))
+    // Iterate over quotient values q from 1 to sqrt(n)-1
     for (ll q = 1; n / q > q; q++) {
         // Find range of k values where floor(n/k) = q
         ll k_left = n / (q + 1) + 1;
