@@ -43,7 +43,7 @@ int main() {
             }
 
             int term = total_pc[prod];
-            //> if ther are odd number of 1s in 'b'
+            //> if ther are even number of 1s in 'b'
             if (__builtin_parity(b) == 0) term = -term;
             res += term;
 
