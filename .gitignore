@@ -1,3 +1,4 @@
 .vscode/
 inputf.in 
 outputf.out
+.DS_store
