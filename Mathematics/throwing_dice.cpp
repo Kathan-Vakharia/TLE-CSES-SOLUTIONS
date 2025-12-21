@@ -59,5 +59,14 @@ int main() {
                  {1, 1, 1, 1, 1, 1}
 
     }};
-    cout << X.power(n + 6).m[0][0] << "\n";
+    X = X.power(n);
+    vector<ll> iv = {1, 1, 2, 4, 8, 16};
+    ll res = 0;
+    for (int i = 0; i < 6; i++) {
+        res += X.m[0][i] * iv[i];
+        res %= M;
+    }
+    cout << res << "\n";
+    // Alternatively,
+    // cout << X.power(n + 6).m[0][0] << "\n";
 }  //* T: O(216*log(n)), S: O(1)
